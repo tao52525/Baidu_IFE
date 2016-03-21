@@ -1,0 +1,67 @@
+img{
+	display: block;
+}
+/*版本样式初始化*/
+*{
+	padding: 0;
+	margin: 0;
+	font: inherit;
+}
+body{
+	background: #fff;
+}
+
+.main{
+	font: 14px Microsoft Yahei,sans-serif;
+	margin: 20px;
+	padding: 20px;
+	background: #eee;
+	border: 1px solid #999;
+	overflow: hidden;
+}
+.left, .right, .center{
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #645E5E;
+}
+/*left*/
+.left{
+	width: 160px;
+	float: left;
+	position: relative;
+}
+.left img{
+	width: 80px;
+	border: 1px solid #928B8B;
+}
+.left figcaption{
+	position: absolute;
+	right: 9px;
+	top: 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+/*center*/
+.center{
+	margin: 0 180px 0 220px;
+}
+.center h2{
+	font-size: 17px;
+	margin-bottom: 12px;
+}
+.center p{
+	margin-bottom: 8px;
+}
+/*right*/
+.right{
+	float: right;
+	width: 80px;
+}
+.right img{
+	width: 80px;
+	margin-bottom: 20px;
+	border: 1px solid #928B8B;
+}
+.right .img-footer{
+	margin-bottom: 0;
+}
