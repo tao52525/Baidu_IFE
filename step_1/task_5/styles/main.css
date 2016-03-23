@@ -1,0 +1,198 @@
+body{
+	margin: 0;
+	color: #333;
+	background-color: #eee;
+	font-family: "microsoft yahei";
+	font-size: 15px; 
+}
+img{
+	max-width: 100%;
+}
+
+/*global*/
+header{
+	background: #F3CB6C;
+	padding: 10px 0;
+}
+footer{
+	background: #000;
+	color: #fff;
+	text-align: center;
+	line-height: 6em;
+}
+.header_nav{
+	width: 1200px;
+	margin: 0 auto;
+}
+/*导航条*/
+.header_nav img{
+	width: 150px;
+}
+.header_nav {
+	position: relative;
+}
+.nav_links{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	list-style-position: inside;
+	right: 0;
+	top: 50%;
+	margin-top: -0.6em;
+	font-size: 12px;
+}
+.nav_links li{
+	float: left;
+	margin-left: 5px;
+	width: 80px;
+}
+.nav_links a{
+	color: #fff;
+	text-decoration: none;
+}
+.nav_links a:visited{
+	color: #534D4D;
+}
+
+/*文章区*/
+article{
+	padding: 20px;
+	margin-top: 20px;
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #aaa;
+}
+article h1{
+	font-size: 1.5em;
+}
+article h2{
+	font-size: 1.3em;
+	color: #777;
+}
+article .author,article time{
+	color: #999;
+}
+article p{
+	font-size: 15px;
+	text-indent: 2em;
+}
+.list_pr{
+	list-style-type: none;
+	font-size: 15px;
+}
+.list_pr li{
+	margin-bottom: 10px;
+}
+.list_rank li{
+	margin-bottom: 8px;
+}
+/*图片列表*/
+.pic_list{
+	overflow: auto;
+}
+.pic_list figure{
+	width: 120px;
+	border: 1px #ccc solid;
+	box-sizing: border-box;
+	padding: 0 10px 10px 10px;
+	text-align: center;
+	margin-bottom: 20px;
+	float: left;
+}
+.pic_list figcaption{
+	font-size: 12px;
+	font-weight: normal;
+	margin: 12px 0;
+}
+/*表格*/
+table{
+	border: 0;
+	width: 100%;
+	border-collapse:collapse;
+}
+td,th{
+	border: 0;
+	padding: 5px;
+	border: 1px #ccc solid;
+}
+th{
+	background: #333;
+	color: #fff;
+	text-align: left;
+}
+tr:last-child{
+	background: #ccc;
+	font-weight: bold;
+}
+
+/*侧边栏*/
+aside {
+	float: right;
+	width: 400px;
+	box-sizing: border-box;
+	padding: 20px;
+	margin-top: 20px;
+	margin-right: 20px;
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #aaa;
+	margin-bottom: 20px;
+	font-size: 13px;
+}
+aside h1{
+	font-size: 18px;
+	border-left: 3px #ccc solid;
+	line-height: 2em;
+	padding-left: 10px;
+	margin: 0;
+}
+aside input, aside textarea {
+	border: 1px #ccc solid;
+	line-height: 1em;
+	padding-left: 10px;
+	margin: 0;
+}
+aside input{
+	padding:3px;
+}
+aside form div{
+	margin:6px 0;
+}
+aside .input_title{
+	width: 30%;
+	display: inline-block;
+	
+	text-align: right;
+	margin-right: 10px;
+}
+aside .input_tip{
+	margin-left: 30%;
+	margin-bottom: 20px;
+	padding-left:10px;
+	color:#949393;
+}
+aside textarea{
+	height: 70px;
+	width: 200px;
+}
+
+aside .submit input{
+	background: #5056DB;
+	border-radius: 7px;
+	font-size: 18px;
+	line-height: 2em;
+	border: 0;
+	outline: none;
+	color: #fff;
+	width: 100%;
+	cursor: pointer;
+}
+aside .textarea .input_title{
+		vertical-align: top;
+}
+/*main*/
+.main{
+	overflow: auto;
+}
+.content{
+	margin-right: 440px;
+	margin-left: 20px;
+}
