@@ -30,8 +30,8 @@ var aqiData = [
     return (item[1]>60);
   })
   //重排序
-  dispData.sort(function(value1,value2){
-    return value2-value1;
+  dispData.sort(function(x,y){
+    return x[1]-y[1];
   })
   //插入DOM中(innerHTML方法)
   var dispList = document.getElementById("aqi-list");
