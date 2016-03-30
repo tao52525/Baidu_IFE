@@ -36,8 +36,8 @@ function addAqiData() {
 /**
  * 渲染aqi-table表格
  */
-function renderAqiList(index) {
-	table_content = "<tr><td>城市</td><td>空气质量</td><td>操作</td></tr>"
+function renderAqiList() {
+	var table_content = "<tr><td>城市</td><td>空气质量</td><td>操作</td></tr>"
 	for(var schweppes in aqiData){
 		table_content+= "<tr><td>"+schweppes+"</td><td>"+aqiData[schweppes]+"</td><td><button>删除</button></td></tr>";
 	}
@@ -74,6 +74,7 @@ function init() {
 	// }
   // 想办法给aqi-table中的所有删除按钮绑定事件，触发delBtnHandle函数
   table.addEventListener("click",function(event){
+  	console.log(event.target.nodeName);
   	if(event.target.nodeName.toLowerCase() === "button"){
   		delBtnHandle.call(event.target);
   	}
