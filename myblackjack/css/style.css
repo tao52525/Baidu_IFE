@@ -1,0 +1,126 @@
+/*版本样式初始化*/
+*{
+	padding: 0;
+	margin: 0;
+	font: inherit;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*通用样式*/
+body{
+	font: 14px "Microsoft Yahei",verdana,arial,sans-serif;
+	color: #000;
+	position: relative;
+}
+
+/*right部分,也就是page1部分*/
+#page1{
+	position: absolute;
+	background: #F0DC98;
+}
+#page1 .money{
+	text-align: center;
+	margin-top: 150px;
+	font-size: 18px;
+}
+#page1 .money p{
+	margin-bottom: 10px;
+}
+#page1 .add{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	margin-top: 35px;
+}
+
+#page1 .add button {
+	margin-right: 5px;
+	padding:3px 15px;
+}
+#page1 .add button:active {
+	position:relative;
+	top:1px;
+}
+
+#page1 .menu{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	margin-top: 90px;
+}
+#page1 .menu button{
+	padding:3px 15px;
+	margin-right: 7px;
+	width: 70px;
+	height: 30px;
+}
+#page1 .menu button:active {
+	position:relative;
+	top:1px;
+}
+
+/* centent部分，也就是page2部分*/
+#page2{
+	background-color: #84CE91;
+	position: absolute;
+}
+#page2 img{
+	display: inline;
+	margin-right: -65px;	
+	box-shadow: 4px 4px 18px 1px #60695e;
+}
+#page2 .dealer{
+	position: absolute;
+	text-align: center;
+	top: 4%;
+}
+#page2 .dealer p{
+	font-size: 17px;
+}
+#page2 .dealer .card{
+	padding-top: 15px;
+	padding-bottom: 10px;
+	text-align: center;
+	margin-right: 65px;
+}
+
+#page2 .center{
+	position: absolute;
+	top: 45%;
+}
+#page2 .center .result{
+	position: absolute;
+	text-align: center;
+	top: 45px;
+}
+#page2 .center .button{
+	position: absolute;
+	width: 300px;
+	left: 50%;
+	margin-left: -150px;
+	text-align: center;
+}
+#page2 .center .button button{
+	width: 65px;
+	height: 32px;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+#page2 .player{
+	text-align: center;
+	position: absolute;
+	bottom: 4%;
+}
+#page2 .player .card{
+	padding-top: 10px;
+	margin-right: 65px;
+}
+#page2 .player p{
+	margin-top: 15px;
+	font-size: 17px;
+}
+#page2 .player .score{
+	margin-top: 20px;
+}

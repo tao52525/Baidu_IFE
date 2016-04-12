@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" 
+			content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>blackjack</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="page1">
+		<div class="money">
+			<p>赌注: <em id="bet">1</em></p>
+			<p>金币: <em id="amount">100</em></p>		
+		</div>
+		<div class="add">
+			<button class="add1">+1</button>
+			<button class="add5">+5</button>
+			<button class="add10">+10</button>
+			<button class="add50">+50</button>
+		</div>
+		<div class="menu">
+			<button id="confirm">确定</button>	
+			<button class="reset">重置</button>
+		</div>
+	</div>
+	<div id="page2">
+		<div class="dealer">
+			<p>庄家</p>
+			<div class="card">
+				<img src="images/pokers/cardback.png">
+				<img src="images/pokers/cardback.png">
+			</div>
+			<div class="score">
+				score: <em></em>
+			</div>
+		</div>
+		<div class="center">
+			<div class="button">
+				<button id="hit">要牌</button>
+				<button id="stand">停牌</button>	
+				<button id="restart">再来一局</button>			
+			</div>
+			<div class="result">
+				result: <em></em>
+			</div>
+		</div>
+		<div class="player">
+			<div class="score">
+				score:
+			</div>
+			<div class="card">
+				<img src="images/pokers/cardback.png">
+				<img src="images/pokers/cardback.png">					
+			</div>
+			<p>玩家</p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
