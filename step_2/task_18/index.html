@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task_18</title>
+	<style type="text/css">
+		#disp{
+			margin-top: 15px;
+		}
+		#disp p{
+			display: inline-block;
+			background: red;
+			margin: 5px;
+			padding: 5px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<input type="number" id="number"></input>
+	<button id="unshift">左侧入</button>
+	<button id="push">右侧入</button>
+	<button id="shift">左侧出</button>
+	<button id="pop">右侧出</button>
+	<div id="disp">
+		
+	</div>
+</body>
+
+<script>
+	window.onload = function(){
+		var myQueue = new Array();
+		var myDisp = document.getElementById("disp");
+		function display(){
+			myDisp.innerHTML = myQueue.map(function(item){
+				return "<p>"+item+"</p>";
+			}).join("");
+		}
+
+		document.getElementById("unshift").addEventListener("click",function(){
+			var myNumber = document.getElementById("number").value;
+			myQueue.unshift(myNumber);
+			display();
+			console.log(myDisp.innerHTML);
+		})		
+		document.getElementById("push").addEventListener("click",function(){
+			var myNumber = document.getElementById("number").value;
+			myQueue.push(myNumber);
+			display();
+		})		
+		document.getElementById("shift").addEventListener("click",function(){
+			myQueue.shift();
+			display();
+		})		
+		document.getElementById("pop").addEventListener("click",function(){
+			myQueue.pop();
+			display();
+		})
+	}
+</script>
+</html>
