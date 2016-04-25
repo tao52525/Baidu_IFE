@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task_19</title>
+	<style type="text/css">
+		#disp{
+			margin-top: 15px;
+			height: 350px;
+			position: relative;
+		}
+		#disp p{
+			position: absolute;
+			display: inline-block;
+			/*background: red;*/
+			width: 15px;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<input type="number" id="number" placeholder="请输入的数字在10-100内"></input>
+	<button id="unshift">左侧入</button>
+	<button id="push">右侧入</button>
+	<button id="shift">左侧出</button>
+	<button id="pop">右侧出</button>
+	<button id="sort">排序</button>
+	<div id="disp">
+		
+	</div>
+</body>
+
+<script>
+	window.onload = function(){
+		var myQueue = [30,20,23,34,45,56,67,78,89,98,65,45,43,23,45,98,12,82,21,71,25,61,28,89,32,87,17];
+		var myDisp = document.getElementById("disp");
+		var snapshots = [];
+
+		//数组渲染显示
+		function render(attr){
+			var queue = attr || myQueue;
+			myDisp.innerHTML = queue.map(function(item,index){
+				return "<p style='height:"+item*3+"px;left:"+index*18+"px;background:"+getColor(item)+"'></p>";
+			}).join("");
+		}
+		//控制输入的数字范围和数组元素数量
+		function numberRange(number){
+			if(number < 10 || number >100){
+				alert("输入的数字在10-100内！");
+				return false;
+			} else if(myQueue.length == 60){
+				alert("元素数量最多限制为60个，不要再输入了！");
+				return false;
+			}else{
+				return true;
+			}
+		}
+		//颜色
+		function getColor(num){
+			switch(true){
+				case (num > 80):
+					return "#5C26C4";
+					break;
+				case (num >60):
+					return "#2274FF";
+					break;
+				case (num >40):
+					return "#3D8E48";
+					break;
+				case (num >20):
+					return "#617905";
+					break;
+				default:
+					return "#C58C36";
+			}
+		}
+		//排序
+		function queueSort(attr){
+			var temp;
+			for(var i=0; i<attr.length; i++){
+				for(var j=0; j<attr.length - i -1; j++){
+					if(attr[j] > attr[j+1]){
+						temp = attr[j];
+						attr[j] = attr[j+1];
+						attr[j+1] = temp;
+						snapshots.push(attr.slice(0));
+					}
+				}
+			}
+		}
+		render();
+		//unshift左侧入
+		document.getElementById("unshift").addEventListener("click",function(){
+			var myNumber = document.getElementById("number").value;
+			if(numberRange(myNumber)){
+				myQueue.unshift(myNumber);
+				render();
+			}
+		})		
+		//push右侧入
+		document.getElementById("push").addEventListener("click",function(){
+			var myNumber = document.getElementById("number").value;
+			if(numberRange(myNumber)){
+				myQueue.push(myNumber);
+				render();
+			}
+		})	
+		//shift左侧出	
+		document.getElementById("shift").addEventListener("click",function(){
+			myQueue.shift();
+			render();
+		})		
+		//pop右侧出
+		document.getElementById("pop").addEventListener("click",function(){
+			myQueue.pop();
+			render();
+		})
+		//排序显示
+		document.getElementById("sort").addEventListener("click",function(){
+			var timer = null;
+			queueSort(myQueue);
+			timer = setInterval(function(){
+				var snapshot = snapshots.shift() || [];
+				if(snapshot.length !== 0){
+					render(snapshot);
+				} else{
+					clearInterval(timer);
+					return;
+				}
+			},50);
+		})
+	}
+</script>
+</html>
