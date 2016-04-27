@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task_20</title>
+	<style type="text/css">
+		#disp{
+			margin-top: 15px;
+		}
+		#disp p{
+			display: inline-block;
+			background: #F9B3B3;
+			margin: 5px;
+			padding: 5px;
+			font-size: 16px;
+		}
+		.search{
+			background: #EC3434;
+		}
+	</style>
+</head>
+<body>
+	<textarea rows="6" cols="25" id="textarea"></textarea>
+	<button id="push">插入</button>
+	<button id="search">查询</button>
+	<input type="text" id="searchText"></input>
+	<div id="disp">
+	</div>
+</body>
+
+<script>
+	var myArry = []; 
+	var push = document.getElementById("push");
+	var search = document.getElementById("search");
+	var disp = document.getElementById("disp");
+
+	//渲染显示
+	function render(str){
+		var disp = document.getElementById("disp");
+		disp.innerHTML = myArry.map(function(item,index){
+			if(str!= null && str.length>0){
+				item = item.replace(new RegExp(str,"g"),"<span class='search'>"+str+"</span>");
+				console.log("hi");
+			}
+			return "<p>"+item+"</p>";
+		}).join("");
+	}
+
+	//插入
+	push.addEventListener("click",function(){
+		var textarea = document.getElementById("textarea").value;
+		var pattern = /[0-9a-zA-Z\u4e00-\u9fa5]+/g;//g把正则表达式定义为全局的
+		var matches;
+		while (matches = pattern.exec(textarea)){//如果正则表达式不能匹配到，则matches=null
+			myArry.push(matches[0]);
+		}
+		console.log(myArry);
+		render();
+	})
+	
+	//查询
+	search.addEventListener("click",function(){
+		var searchText = document.getElementById("searchText").value.trim();
+		render(searchText);
+	})
+</script>
+</html>
