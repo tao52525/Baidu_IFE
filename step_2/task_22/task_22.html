@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>task_22</title>
+	<style type="text/css">
+		.root{
+			width: 1000px;
+			height: 300px;
+			margin: 0 auto;
+			margin-top: 50px;
+			border: solid 2px #575555;
+			box-sizing: border-box;
+			display: flex;
+		}
+		.branch{
+			flex: 1;
+			margin: 20px;
+			border: solid 2px #575555;
+			display: flex;
+		}
+		.btn{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 120px;
+		}
+		#dlr,#ldr,#lrd{
+			margin:0 70px;
+			padding:7px 15px;
+			font-size: 17px;
+		}
+	</style>
+</head>
+<body>
+	<div class="root">
+		<div class="branch" id="br1-left">
+			<div class="branch" id="br2-1-left">
+				<div class="branch" id="br3-1-left"></div>
+				<div class="branch" id="br3-1-right"></div>
+			</div>
+			<div class="branch" id="br2-1-right">
+				<div class="branch" id="br3-2-left"></div>
+				<div class="branch" id="br3-2-right"></div>
+			</div>
+		</div>
+		<div class="branch" id="br1-right">
+			<div class="branch" id="br2-2-left">
+				<div class="branch" id="br3-3-left"></div>
+				<div class="branch" id="br3-3-right"></div>
+			</div>
+			<div class="branch" id="br2-2-right">
+				<div class="branch" id="br3-4-left"></div>
+				<div class="branch" id="br3-4-right"></div>
+			</div>
+		</div>
+	</div>
+	<div class="btn">
+		<button id="dlr">前序遍历</button>
+		<button id="ldr">中序遍历</button>
+		<button id="lrd">后序遍历</button>
+	</div>
+</body>
+
+<script type="text/javascript">
+	//定义变量
+	var tree_root = document.getElementsByClassName("root")[0],
+		pre_btn = document.getElementById("dlr"),
+		in_btn = document.getElementById("ldr"),
+		post_btn = document.getElementById("lrd"),
+		queue = [],   //数的显示顺序存储队列
+		timer = null;
+
+	//事件
+	pre_btn.addEventListener("click",function(){
+		reset();
+		preOrder(tree_root);
+		changeColor();
+	});
+	in_btn.addEventListener("click",function(){
+		reset();
+		inOrder(tree_root);
+		changeColor();
+	});
+	post_btn.addEventListener("click",function(){
+		reset();
+		postOrder(tree_root);
+		changeColor();
+	});
+
+	//前序、中序、后序函数
+	function preOrder(node){
+		if(!(node == null)){
+			queue.push(node);
+			preOrder(node.firstElementChild);
+			preOrder(node.lastElementChild);
+		}
+	}
+	function inOrder(node){
+		if(!(node == null)){
+			inOrder(node.firstElementChild);
+			queue.push(node);
+			inOrder(node.lastElementChild);
+		}
+	}
+	function postOrder(node){
+		if(!(node == null)){
+			postOrder(node.firstElementChild);
+			postOrder(node.lastElementChild);
+			queue.push(node);
+		}
+	}
+
+	//背景色改变
+	function changeColor(){
+		var i = 0
+		timer = setInterval(function(){
+			if(i >= 1){
+					queue[i-1].style.background = "#fff";
+			}
+			if(i == queue.length){
+				clearInterval(timer);
+			}
+			if(i < queue.length){	
+				queue[i++].style.background = "#71B287";
+			}
+		},400);
+	}
+
+	//初始化
+	function reset(){
+		clearInterval(timer);
+		var divs = document.getElementsByTagName("div");
+		queue = [];
+		for(var i=0 ;i<divs.length; i++){
+			divs[i].style.background = "#fff";
+		}
+	} 
+</script>
+</html>
