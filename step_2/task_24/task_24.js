@@ -84,21 +84,17 @@ function dfsTree(node){
 }
 //bfs
 function bfsTree(node){
-	if(node.nodeName == "DIV"){
-		queue.push(node);
-	}
-	bfsTreeRecur(node);
-}
-function bfsTreeRecur(node){
-	var nodeChilds = node.childNodes;
-	for(var i=0; i<nodeChilds.length; i++){
-		if(nodeChilds[i].nodeName == "DIV"){
-			queue.push(nodeChilds[i]);
-		}
-	}
-	for(var i=0; i<nodeChilds.length; i++){
-		if(nodeChilds[i].nodeName == "DIV"){
-			bfsTreeRecur(nodeChilds[i]);
+	var current = node;
+	var queue_1 = [];
+	queue.push(current);
+	queue_1.push(current);
+	while(queue_1.length > 0){
+		current = queue_1.shift();
+		for(var i=0; i<current.childNodes.length; i++){
+			if(current.childNodes[i].nodeName == "DIV"){
+				queue.push(current.childNodes[i]);
+				queue_1.push(current.childNodes[i]);
+			}
 		}
 	}
 }
