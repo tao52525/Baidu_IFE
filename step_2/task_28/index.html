@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>task_28</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+<div id="control">
+	<fieldset id="control-module">
+		<legend>Control操作面板</legend>
+		<div id="power">
+			<p>动力系统选择</p>
+			<input type="radio" name="power" value="1" checked="checked"/>前进号（速率30px/s，能耗5%/s）<br/>
+			<input type="radio" name="power" value="2" />奔腾号（速率50px/s，能耗7%/s）<br/>
+			<input type="radio" name="power" value="3" />超越号（速率80px/s，能耗9%/s）<br/>
+		</div>
+		<div id="energy">
+			<p>能源系统选择</p>
+			<input type="radio" name="energy" value="1" checked="checked"/>劲量型（补充能源速度2%/s）<br/>
+			<input type="radio" name="energy" value="2" />光能型（补充能源速度3%/s）<br/>
+			<input type="radio" name="energy" value="3" />永久型（补充能源速度4%/s）<br/>
+		</div>
+		<div id="control0" class="control-orbit" data-id="0">
+			<span>第一轨道</span>
+			<button class="create" data-status="create">创建飞船</button>
+			<button class="fly" data-status="fly" disabled="disabled">飞行</button>
+		</div>
+		<div id="control1" class="control-orbit" data-id="1">
+			<span>第二轨道</span>
+			<button class="create" data-status="create">创建飞船</button>
+			<button class="fly" data-status="fly" disabled="disabled">飞行</button>
+		</div>
+		<div id="control2" class="control-orbit" data-id="2">
+			<span>第三轨道</span>
+			<button class="create" data-status="create">创建飞船</button>
+			<button class="fly" data-status="fly" disabled="disabled">飞行</button>
+		</div>
+		<div id="control3" class="control-orbit" data-id="3">
+			<span>第四轨道</span>
+			<button class="create" data-status="create">创建飞船</button>
+			<button class="fly" data-status="fly" disabled="disabled">飞行</button>
+		</div>
+	</fieldset>
+</div>
+<div id="console">
+	<fieldset id="disp">
+		<legend>飞船的状况</legend>
+		<table>
+			<thead>
+				<tr>
+					<td>飞船</td>
+					<td>动力系统</td>
+					<td>能源系统</td>
+					<td>当前状态</td>
+					<td>剩余能耗</td>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</fieldset>
+	<fieldset id="console-module">
+		<legend>Console控制台</legend>
+		<div id="console-text"></div>
+	</fieldset>
+</div>
+<div id="cosmos">
+	<div id="planet"></div>
+	<div id="orbit0" class="orbit"></div>
+	<div id="orbit1" class="orbit"></div>
+	<div id="orbit2" class="orbit"></div>
+	<div id="orbit3" class="orbit"></div>
+
+	<div id="ship0" class="ship"><div class="energy-1"></div><div class="energy-2">100%</div></div>
+	<div id="ship1" class="ship"><div class="energy-1"></div><div class="energy-2">100%</div></div>
+	<div id="ship2" class="ship"><div class="energy-1"></div><div class="energy-2">100%</div></div>
+	<div id="ship3" class="ship"><div class="energy-1"></div><div class="energy-2">100%</div></div>
+</div>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/Ship.js"></script>
+<script type="text/javascript" src="js/commander.js"></script>
+<script type="text/javascript" src="js/spaceManager.js"></script>
+</body>
+</html>

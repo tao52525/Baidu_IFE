@@ -1,0 +1,81 @@
+//指挥
+var commander = {
+	//各个轨道的状态
+	orbitStatus : [false,false,false,false],
+	createShip : function(orbitId){
+		if(this.orbitStatus[orbitId]){
+			log("轨道"+(orbitId+1)+"上已经有飞船了！","blue");
+		} else {
+			this.orbitStatus[orbitId] == true;
+			log("在轨道"+(orbitId+1)+"上创建飞船","yellow");
+			spaceManager.BUS.sendMessage("commander",commander.Adapter({ //发射器Adapter，把原来的指令格式翻译成二进制码
+				id : orbitId,
+				command : "create"
+			}));
+		}
+	},
+	startShip : function(orbitId){
+		if(!this.orbitStatus[orbitId]){
+			log("轨道"+(orbitId+1)+"上没有飞船","blue");
+		} else {
+			log("向轨道"+(orbitId+1)+"上的飞船发起飞行指令","yellow");
+			spaceManager.BUS.sendMessage("commander",commander.Adapter({
+				id : orbitId,
+				command : "start"
+			}));
+		}
+	},
+	stopShip : function(orbitId){
+		if(!this.orbitStatus[orbitId]){
+			log("轨道"+(orbitId+1)+"上没有飞船","blue");
+		} else {
+			log("向轨道"+(orbitId+1)+"上的飞船发起停止指令","yellow");
+			spaceManager.BUS.sendMessage("commander",commander.Adapter({
+				id : orbitId,
+				command : "stop"
+			}));
+		}
+	},
+	destoryShip : function(orbitId){
+		if(!this.orbitStatus[orbitId]){
+			log("轨道"+(orbitId+1)+"上没有飞船","blue");
+		} else {
+			log("向轨道"+(orbitId+1)+"上的飞船发起摧毁指令","yellow");
+			spaceManager.BUS.sendMessage("commander",commander.Adapter({
+				id : orbitId,
+				command : "destory"
+			}));
+		}
+	},
+	acceptMessage : function(info){
+		if(!!info){
+			var info_1 = info.slice(0,4);
+			var info_2 = info.slice(4,8);
+			var info_3 = info.slice(8,16);
+			var shipInfo = {};
+			shipInfo.id = transform.b2s(info_1);
+			shipInfo.status = transform.status(info_2);
+			shipInfo.energy = transform.b2s(info_3)+"%";
+			var table_body = document.querySelector("#console #disp table tbody");
+			for(var i=0; i<table_body.childNodes.length; i++){
+				if(table_body.childNodes[i].dataset.id == shipInfo.id){
+					if(shipInfo.status == "销毁"){
+						console.log("销毁");
+						table_body.removeChild(table_body.childNodes[i]);
+					} else if(shipInfo.status == "停止" || shipInfo.status == "飞行中"){
+						var td_list = table_body.childNodes[i].getElementsByTagName("td");
+						td_list[3].innerHTML = shipInfo.status;
+						td_list[4].innerHTML = shipInfo.energy;
+					}
+				}
+			}	
+		}
+	},
+	Adapter : function(message){ 
+		var info;
+		info = ("000"+transform.s2b(message.id)).slice(-4);
+		info += transform.s2b(message.command);
+		return info;
+	}
+
+}
